@@ -66,8 +66,9 @@ local data = {
     infoReady=false, status="Press START", running=false,
 }
 
-local DIFFICULTIES       = { "Easy", "Normal", "Hard", "Master" }
-local DIFF_OFFSET        = { Easy=0, Normal=20, Hard=40, Master=60 }
+-- ── FIXED: 5 difficulties, offsets match 1-20 / 21-40 / 41-60 / 61-80 / 81-100
+local DIFFICULTIES       = { "Easy", "Normal", "Hard", "Expert", "Master" }
+local DIFF_OFFSET        = { Easy=0, Normal=20, Hard=40, Expert=60, Master=80 }
 local selectedDifficulty = "Normal"
 local selectedStage      = 1
 local dungeonOverride    = false
@@ -92,11 +93,14 @@ local C = {
     barGreen=Color3.fromRGB(45,195,95), barOrange=Color3.fromRGB(255,140,30),
     barYellow=Color3.fromRGB(220,190,40),
     easy=Color3.fromRGB(55,220,115), normal=Color3.fromRGB(90,170,255),
-    hard=Color3.fromRGB(255,100,70),
+    hard=Color3.fromRGB(255,100,70), expert=Color3.fromRGB(220,100,255),
 }
 local function diffColor(d)
-    if d=="Easy" then return C.easy elseif d=="Hard" then return C.hard
-    elseif d=="Master" then return C.orange else return C.normal end
+    if d=="Easy"   then return C.easy
+    elseif d=="Hard"   then return C.hard
+    elseif d=="Expert" then return C.expert
+    elseif d=="Master" then return C.orange
+    else return C.normal end
 end
 
 -- ── GUI build ────────────────────────────────────────────────
@@ -250,11 +254,15 @@ local dungeonPreviewLbl=mkL(dungeonPanel,"[Normal] World 1",UDim2.new(0,190,0,24
 local function refreshDungeonUI()
     diffValLbl.Text=selectedDifficulty; diffValLbl.TextColor3=diffColor(selectedDifficulty)
     stageValLbl.Text=tostring(selectedStage)
-    local wn=DIFF_OFFSET[selectedDifficulty]+selectedStage
-    dungeonPreviewLbl.Text=string.format("[%s] W%d (arg:%d)",selectedDifficulty,selectedStage,wn)
+    -- FIXED: world number = offset + stage  (e.g. Normal offset=20, stage=1 → world 21)
+    local wn = DIFF_OFFSET[selectedDifficulty] + selectedStage
+    dungeonPreviewLbl.Text=string.format("[%s] W%d (arg:%d)", selectedDifficulty, selectedStage, wn)
     dungeonPreviewLbl.TextColor3=diffColor(selectedDifficulty)
-    if dungeonOverride then overrideToggle.Text="AUTO"; overrideToggle.BackgroundColor3=C.accentDim
-    else overrideToggle.Text="MANUAL"; overrideToggle.BackgroundColor3=C.green end
+    if dungeonOverride then
+        overrideToggle.Text="AUTO"; overrideToggle.BackgroundColor3=C.accentDim
+    else
+        overrideToggle.Text="MANUAL"; overrideToggle.BackgroundColor3=C.green
+    end
 end
 
 diffLeft.MouseButton1Click:Connect(function()
@@ -302,7 +310,8 @@ local function closeUIPanels()
 end
 
 local function getWorldNumber()
-    return (DIFF_OFFSET[selectedDifficulty] or 20) + selectedStage
+    -- FIXED: offset + stage  (Easy 1-20, Normal 21-40, Hard 41-60, Expert 61-80, Master 81-100)
+    return (DIFF_OFFSET[selectedDifficulty] or 0) + selectedStage
 end
 
 local function getTargetWorld()
@@ -793,16 +802,13 @@ local function startGrind()
         -- ── Death handler ─────────────────────────────────────────
         local lastReenter=0
 
-        -- Fast: Humanoid.Died event
--- Fast: Humanoid.Died event
         task.spawn(function()
             while not stopFlag and data.running do
                 local ch = player.Character or player.CharacterAdded:Wait()
                 local hm = ch:WaitForChild("Humanoid")
                 hm.Died:Wait()
-                -- wait for new character FIRST, then fire
                 local newCh = player.CharacterAdded:Wait()
-                RunService.Heartbeat:Wait() -- next frame = near instant
+                RunService.Heartbeat:Wait()
                 root     = newCh:WaitForChild("HumanoidRootPart")
                 humanoid = newCh:WaitForChild("Humanoid")
                 if not stopFlag and data.running and not farmWalkLock then
@@ -813,7 +819,6 @@ local function startGrind()
                             and string.format("💀 Re-entering [%s] W%d", selectedDifficulty, selectedStage)
                             or "💀 Re-entering World "..w
                         updateGUI()
-                        -- retry loop until confirmed
                         local waited = 0
                         local confirmed = false
                         repeat
@@ -833,7 +838,6 @@ local function startGrind()
             end
         end)
 
-        -- Fallback: polling loop
         task.spawn(function()
             while not stopFlag and data.running do
                 task.wait(0.1)
@@ -860,7 +864,7 @@ local function startGrind()
                         updateGUI()
                         remoteWorld:FireServer(w)
                         local waited=0
-                        local ln=nil  -- FIX: declared local
+                        local ln=nil
                         repeat task.wait(1); waited+=1
                             ln=tonumber(stageLabel.Text:match("World (%d+)"))
                         until ln==w or waited>=10 or stopFlag
