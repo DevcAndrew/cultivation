@@ -1,144 +1,159 @@
--- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+-- CommandData
+-- Plugin command definitions for EazyCommand
+local commands = {}
+local selectionService = game:GetService("Selection")
 
--- Decompiled with Velocity Script Decompiler
-local v1 = {}
-local v_u_2 = game:GetService("Selection")
-table.insert(v1, {
-    ["Name"] = "\231\178\146\229\173\144\229\164\167\229\176\143\232\174\190\231\189\174",
+-- 粒子缩放 (Particle Scale) - Small
+table.insert(commands, {
+    ["Name"] = "粒子缩放1",
     ["Logic"] = function()
         game:GetService("Selection"):Get()[1].Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 30), NumberSequenceKeypoint.new(1, 50) })
     end
 })
-table.insert(v1, {
-    ["Name"] = "\231\178\146\229\173\144\229\164\167\229\176\143\232\174\190\231\189\174",
+
+-- 粒子缩放 (Particle Scale) - Large
+table.insert(commands, {
+    ["Name"] = "粒子缩放2",
     ["Logic"] = function()
         game:GetService("Selection"):Get()[1].Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 40), NumberSequenceKeypoint.new(1, 80) })
     end
 })
-table.insert(v1, {
-    ["Name"] = "\233\162\156\232\137\178\232\174\190\231\189\174",
+
+-- 设置颜色 (Set Color) - Apply to World
+table.insert(commands, {
+    ["Name"] = "设置颜色1",
     ["Logic"] = function()
-        local v3 = game:GetService("Selection"):Get()[1]
-        workspace["\233\152\181\230\179\149\231\172\166\231\159\179\233\162\156\232\137\178"]:SetAttribute("1", v3.Color)
+        local selectedObject = game:GetService("Selection"):Get()[1]
+        workspace["世界背景颜色"]:SetAttribute("1", selectedObject.Color)
     end
 })
-table.insert(v1, {
-    ["Name"] = "\233\162\156\232\137\178\232\174\190\231\189\174",
+
+-- 设置颜色 (Set Color) - Load Asset
+table.insert(commands, {
+    ["Name"] = "设置颜色2",
     ["Logic"] = function()
         game:GetService("InsertService"):LoadAsset(2956239660).Parent = workspace
     end
 })
-table.insert(v1, {
-    ["Name"] = "\233\148\129\229\174\154\233\131\168\228\187\182",
+
+-- 添加碰撞 (Add Collision)
+table.insert(commands, {
+    ["Name"] = "添加碰撞",
     ["Logic"] = function()
-        local v4 = game:GetService("Selection"):Get()[1]:GetDescendants()
-        for _, v5 in ipairs(v4) do
-            if v5.Name == "\228\184\138" then
-                local v6 = v5:Clone()
-                v6.Parent = v5.Parent
-                v6.Name = "\231\162\176\230\146\158"
-                v6.Transparency = 1
-                v6.CanCollide = false
-                v6.Size = Vector3.new(3, 4, 3)
-                v6.Position = v5.Position + Vector3.new(0, 2, 0)
+        local descendants = game:GetService("Selection"):Get()[1]:GetDescendants()
+        for _, descendant in ipairs(descendants) do
+            if descendant.Name == "碰" then
+                local clone = descendant:Clone()
+                clone.Parent = descendant.Parent
+                clone.Name = "物理碰撞"
+                clone.Transparency = 1
+                clone.CanCollide = false
+                clone.Size = Vector3.new(3, 4, 3)
+                clone.Position = descendant.Position + Vector3.new(0, 2, 0)
             end
         end
     end
 })
-table.insert(v1, {
-    ["Name"] = "\232\167\163\233\148\129\233\131\168\228\187\182",
+
+-- 移除碰撞 (Remove Collision)
+table.insert(commands, {
+    ["Name"] = "移除碰撞",
     ["Logic"] = function()
-        -- upvalues: (copy) v_u_2
-        local v7 = v_u_2:Get()
-        if #v7 == 0 then
+        local selectedParts = selectionService:Get()
+        if #selectedParts == 0 then
             warn("Unchecked any instance")
-            v7 = nil
+            selectedParts = nil
         end
-        local v8 = not v7 and {} or v7[1]:GetDescendants()
-        for _, v9 in ipairs(v8) do
-            if v9:isA("BasePart") then
-                v9.Locked = false
+        local descendants = not selectedParts and {} or selectedParts[1]:GetDescendants()
+        for _, descendant in ipairs(descendants) do
+            if descendant:isA("BasePart") then
+                descendant.Locked = false
             end
         end
     end
 })
-table.insert(v1, {
-    ["Name"] = "\231\173\155\233\128\137\233\148\154\229\155\186\233\131\168\228\187\182",
+
+-- 选中锚固 (Selected Anchored)
+table.insert(commands, {
+    ["Name"] = "选中锚固",
     ["Logic"] = function()
-        -- upvalues: (copy) v_u_2
-        local v10 = {}
-        local v11 = v_u_2:Get()
-        if #v11 == 0 then
+        local anchoredParts = {}
+        local selectedParts = selectionService:Get()
+        if #selectedParts == 0 then
             warn("Unchecked any instance")
-            v11 = nil
+            selectedParts = nil
         end
-        local v12 = not v11 and {} or v11[1]:GetDescendants()
-        for _, v13 in ipairs(v12) do
-            if v13:isA("BasePart") and v13.Anchored == true then
-                table.insert(v10, v13)
+        local descendants = not selectedParts and {} or selectedParts[1]:GetDescendants()
+        for _, descendant in ipairs(descendants) do
+            if descendant:isA("BasePart") and descendant.Anchored == true then
+                table.insert(anchoredParts, descendant)
             end
         end
-        v_u_2:Set(v10)
+        selectionService:Set(anchoredParts)
     end
 })
-table.insert(v1, {
-    ["Name"] = "X\233\151\180\233\154\148\230\142\146\229\136\151",
+
+-- X坐标排序 (X Coordinate Sort)
+table.insert(commands, {
+    ["Name"] = "X坐标排序",
     ["Logic"] = function()
-        -- upvalues: (copy) v_u_2
-        local v14 = v_u_2:Get()
-        if #v14 == 0 then
+        local selectedParts = selectionService:Get()
+        if #selectedParts == 0 then
             warn("Unchecked any instance")
-            v14 = nil
+            selectedParts = nil
         end
-        local v15 = not v14 and {} or v14[1]:GetDescendants()
-        local v16 = 0
-        for _, v17 in ipairs(v15) do
-            if v17:isA("BasePart") then
-                local v18 = v16 + v17.Size.X / 2
-                v17.Position = Vector3.new(0, 0, 0) + Vector3.new(v18)
-                v16 = v16 + v17.Size.X
+        local descendants = not selectedParts and {} or selectedParts[1]:GetDescendants()
+        local accumulatedX = 0
+        for _, descendant in ipairs(descendants) do
+            if descendant:isA("BasePart") then
+                local newPosition = accumulatedX + descendant.Size.X / 2
+                descendant.Position = Vector3.new(0, 0, 0) + Vector3.new(newPosition)
+                accumulatedX = accumulatedX + descendant.Size.X
             end
         end
     end
 })
-table.insert(v1, {
-    ["Name"] = "Y\233\151\180\233\154\148\230\142\146\229\136\151",
+
+-- Y坐标排序 (Y Coordinate Sort)
+table.insert(commands, {
+    ["Name"] = "Y坐标排序",
     ["Logic"] = function()
-        -- upvalues: (copy) v_u_2
-        local v19 = v_u_2:Get()
-        if #v19 == 0 then
+        local selectedParts = selectionService:Get()
+        if #selectedParts == 0 then
             warn("Unchecked any instance")
-            v19 = nil
+            selectedParts = nil
         end
-        local v20 = not v19 and {} or v19[1]:GetDescendants()
-        local v21 = 0
-        for _, v22 in ipairs(v20) do
-            if v22:isA("BasePart") then
-                local v23 = v21 + v22.Size.Y / 2
-                v22.Position = Vector3.new(0, 0, 0) + Vector3.new(0, v23)
-                v21 = v21 + v22.Size.Y
+        local descendants = not selectedParts and {} or selectedParts[1]:GetDescendants()
+        local accumulatedY = 0
+        for _, descendant in ipairs(descendants) do
+            if descendant:isA("BasePart") then
+                local newPosition = accumulatedY + descendant.Size.Y / 2
+                descendant.Position = Vector3.new(0, 0, 0) + Vector3.new(0, newPosition)
+                accumulatedY = accumulatedY + descendant.Size.Y
             end
         end
     end
 })
-table.insert(v1, {
-    ["Name"] = "Z\233\151\180\233\154\148\230\142\146\229\136\151",
+
+-- Z坐标排序 (Z Coordinate Sort)
+table.insert(commands, {
+    ["Name"] = "Z坐标排序",
     ["Logic"] = function()
-        -- upvalues: (copy) v_u_2
-        local v24 = v_u_2:Get()
-        if #v24 == 0 then
+        local selectedParts = selectionService:Get()
+        if #selectedParts == 0 then
             warn("Unchecked any instance")
-            v24 = nil
+            selectedParts = nil
         end
-        local v25 = not v24 and {} or v24[1]:GetDescendants()
-        local v26 = 0
-        for _, v27 in ipairs(v25) do
-            if v27:isA("BasePart") then
-                local v28 = v26 + v27.Size.Z / 2
-                v27.Position = Vector3.new(0, 0, 0) + Vector3.new(0, 0, v28)
-                v26 = v26 + v27.Size.Z
+        local descendants = not selectedParts and {} or selectedParts[1]:GetDescendants()
+        local accumulatedZ = 0
+        for _, descendant in ipairs(descendants) do
+            if descendant:isA("BasePart") then
+                local newPosition = accumulatedZ + descendant.Size.Z / 2
+                descendant.Position = Vector3.new(0, 0, 0) + Vector3.new(0, 0, newPosition)
+                accumulatedZ = accumulatedZ + descendant.Size.Z
             end
         end
     end
 })
-return v1
+
+return commands
