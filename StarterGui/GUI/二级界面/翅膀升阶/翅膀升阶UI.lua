@@ -1,0 +1,321 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Decompiled with Velocity Script Decompiler
+_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6UI = {}
+_E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+_E9_A2_9C_E8_89_B2 = {}
+_E5_B8_B8_E9_87_8F = {}
+_E6_95_B0_E5_AD_A6_E8_BF_90_E7_AE_97 = {}
+_E5_AE_A2_E6_88_B7_E7_AB_AF_E8_A3_85_E5_A4_87_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+local v1 = require((game:GetService("ReplicatedStorage"):WaitForChild("BaseState", 60)))
+require((game:GetService("ReplicatedStorage"):WaitForChild("FsmMachine", 60)))
+local v2 = v1:New("\233\187\152\232\174\164\231\138\182\230\128\129")
+function _E5_88_87_E6_8D_A2_E9_94_81_E5_AE_9A_E8_AF_8D_E6_9D_A1(p3)
+    if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\230\180\151\231\130\188" and p3 >= 1 then
+        local v4 = _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8[p3]
+        if not v4 and _E5_88_97_E8_A1_A8_E6_9C_89_E6_95_88_E9_95_BF_E5_BA_A6() >= 6 then
+            _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("\226\128\139Cap locked attributes at 6")
+            return
+        end
+        _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8[p3] = not v4
+        local v5 = _E7_BF_85_E8_86_80_E6_B4_97_E7_82_BC_E8_A1_A8[_E5_88_97_E8_A1_A8_E6_9C_89_E6_95_88_E9_95_BF_E5_BA_A6()]
+        local v6 = not v5 and 0 or v5["\231\190\189\230\160\184"]
+        if v6 <= _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 then
+            _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.TextColor3 = Color3.fromRGB(0, 255, 0)
+        else
+            _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.TextColor3 = Color3.fromRGB(255, 0, 0)
+        end
+        _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.Text = table.concat({ _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8, "/", v6 })
+        _E6_9B_B4_E6_96_B0_E7_BF_85_E8_86_80_E5_B1_9E_E6_80_A7(false, _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8)
+    end
+end
+function _E5_88_87_E6_8D_A2_E6_A0_87_E7_AD_BE(p7)
+    _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 = p7
+    _E5_93_81_E8_B4_A8_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6.Visible = false
+    _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6.Visible = false
+    _E6_88_90_E5_8A_9F_E7_8E_87_E6_A1_86_E6_9E_B6.Visible = false
+    _E6_9D_90_E6_96_992_E6_A1_86_E6_9E_B6.Visible = false
+    if p7 == "\229\141\135\233\152\182" then
+        _E6_9D_90_E6_96_99_E5_9B_BE_E6_A0_87.Image = "rbxassetid://120739737695679"
+        _E5_93_81_E8_B4_A8_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6.Visible = true
+        _E6_88_90_E5_8A_9F_E7_8E_87_E6_A1_86_E6_9E_B6.Visible = true
+        _E7_A1_AE_E8_AE_A4_E6_8C_89_E9_92_AE_E6_96_87_E6_9C_AC.Text = "Upgrade Rarity"
+    end
+    if p7 == "\230\180\151\231\130\188" then
+        _E6_9D_90_E6_96_99_E5_9B_BE_E6_A0_87.Image = "rbxassetid://76887312972794"
+        _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_96_87_E6_9C_AC.Text = "Reroll Wing Attribute"
+        _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6.Visible = true
+        _E7_A1_AE_E8_AE_A4_E6_8C_89_E9_92_AE_E6_96_87_E6_9C_AC.Text = "Reroll"
+        _E6_9D_90_E6_96_992_E6_A1_86_E6_9E_B6.Visible = true
+    end
+    if p7 == "\229\136\134\232\167\163" then
+        _E6_9D_90_E6_96_99_E5_9B_BE_E6_A0_87.Image = "rbxassetid://76887312972794"
+        _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_96_87_E6_9C_AC.Text = "Convert into WingReroll Quill"
+        _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6.Visible = true
+        _E7_A1_AE_E8_AE_A4_E6_8C_89_E9_92_AE_E6_96_87_E6_9C_AC.Text = "Convert"
+    end
+    _E6_9B_B4_E6_96_B0_E5_8D_87_E9_98_B6_E5_8C_BA()
+end
+function _E5_88_97_E8_A1_A8_E6_9C_89_E6_95_88_E9_95_BF_E5_BA_A6()
+    local v8 = 0
+    for _, v9 in ipairs(_E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8) do
+        if v9 then
+            v8 = v8 + 1
+        end
+    end
+    return v8
+end
+function _E6_9B_B4_E6_96_B0_E6_9D_90_E6_96_99_E6_98_BE_E7_A4_BA()
+    if _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE then
+        local v10 = _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"]
+        local v11 = _E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E8_A1_A8[_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"]]
+        _E5_93_81_E8_B4_A81_E6_96_87_E6_9C_AC.Text = _E5_B8_B8_E9_87_8F["\232\163\133\229\164\135\229\147\129\232\180\168\229\175\185\229\186\148\229\144\141\231\167\176"](v10)
+        _E6_9B_B4_E6_96_B0_E5_93_81_E8_B4_A8_E6_96_87_E6_9C_AC(_E5_93_81_E8_B4_A81_E6_96_87_E6_9C_AC, v10)
+        _E6_9B_B4_E6_96_B0_E5_93_81_E8_B4_A8_E6_96_87_E6_9C_AC(_E5_93_81_E8_B4_A82_E6_96_87_E6_9C_AC, v10 + 1)
+        if _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"] < #_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E8_A1_A8 then
+            _E5_93_81_E8_B4_A82_E6_96_87_E6_9C_AC.Text = _E5_B8_B8_E9_87_8F["\232\163\133\229\164\135\229\147\129\232\180\168\229\175\185\229\186\148\229\144\141\231\167\176"](v10 + 1)
+            _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.Text = table.concat({ _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8, "/", v11["\230\182\136\232\128\151\230\157\144\230\150\153"] })
+            if _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 >= v11["\230\182\136\232\128\151\230\157\144\230\150\153"] then
+                _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.TextColor3 = Color3.fromRGB(0, 255, 0)
+            else
+                _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.TextColor3 = Color3.fromRGB(255, 0, 0)
+            end
+            local v12 = _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\141\135\233\152\182\230\172\161\230\149\176"] or 0
+            local v13 = v11["\230\136\144\229\138\159\231\142\135"] + v11["\230\136\144\229\138\159\231\142\135"] * v12
+            _E6_88_90_E5_8A_9F_E7_8E_87.Text = _E6_95_B0_E5_AD_A6_E8_BF_90_E7_AE_97["\228\191\157\231\149\153\229\176\143\230\149\176"](v13 * 100, 4) .. "%"
+            return
+        end
+        _E5_93_81_E8_B4_A82_E6_96_87_E6_9C_AC.Text = "-"
+        _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.Text = table.concat({ _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8, "/", "-" })
+        _E6_88_90_E5_8A_9F_E7_8E_87.Text = "-"
+    end
+end
+function _E6_9B_B4_E6_96_B0_E5_93_81_E8_B4_A8_E6_96_87_E6_9C_AC(p14, p15)
+    local v16 = p15 > 14 and 14 or p15
+    local v17 = p14:WaitForChild("UIStroke", 5)
+    local v18 = p14:WaitForChild("UIGradient", 5)
+    v17.Color = _E5_B8_B8_E9_87_8F["\232\163\133\229\164\135\229\147\129\232\180\168\230\143\143\232\190\185\233\162\156\232\137\178"](v16)
+    v18.Color = _E5_B8_B8_E9_87_8F["\232\163\133\229\164\135\229\147\129\232\180\168\232\131\140\230\153\175\230\184\144\229\143\152\233\162\156\232\137\178"](v16)
+end
+function _E6_9B_B4_E6_96_B0_E5_8D_87_E9_98_B6_E5_8C_BA()
+    if _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE then
+        _E5_8D_87_E9_98_B6_E5_9B_BE_E6_A0_87.Image = _E5_AE_A2_E6_88_B7_E7_AB_AF_E8_A3_85_E5_A4_87_E7_AE_A1_E7_90_86_E5_99_A8["\232\163\133\229\164\135\229\155\190\230\160\135"](_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE)
+        if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\141\135\233\152\182" then
+            _E6_9B_B4_E6_96_B0_E6_9D_90_E6_96_99_E6_98_BE_E7_A4_BA()
+            _E6_9B_B4_E6_96_B0_E7_BF_85_E8_86_80_E5_B1_9E_E6_80_A7(true, nil)
+        end
+        if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\230\180\151\231\130\188" then
+            local v19 = _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"] - 5
+            _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.Text = table.concat({ _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_AF_9B_E7_AC_94, "/", v19 })
+            if v19 <= _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_AF_9B_E7_AC_94 then
+                _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.TextColor3 = Color3.fromRGB(0, 255, 0)
+            else
+                _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.TextColor3 = Color3.fromRGB(255, 0, 0)
+            end
+            local v20 = _E7_BF_85_E8_86_80_E6_B4_97_E7_82_BC_E8_A1_A8[_E5_88_97_E8_A1_A8_E6_9C_89_E6_95_88_E9_95_BF_E5_BA_A6()]
+            local v21 = not v20 and 0 or v20["\231\190\189\230\160\184"]
+            if v21 <= _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 then
+                _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.TextColor3 = Color3.fromRGB(0, 255, 0)
+            else
+                _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.TextColor3 = Color3.fromRGB(255, 0, 0)
+            end
+            _E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC.Text = table.concat({ _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8, "/", v21 })
+            _E6_9B_B4_E6_96_B0_E7_BF_85_E8_86_80_E5_B1_9E_E6_80_A7(false, _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8)
+        end
+        if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\136\134\232\167\163" then
+            local v22 = _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"] - 5
+            _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.Text = "+" .. v22
+            _E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F.TextColor3 = Color3.fromRGB(0, 255, 0)
+            _E6_9B_B4_E6_96_B0_E7_BF_85_E8_86_80_E5_B1_9E_E6_80_A7(false, nil)
+        end
+    end
+end
+function _E6_9B_B4_E6_96_B0_E7_BF_85_E8_86_80_E5_B1_9E_E6_80_A7(p23, p24)
+    _E5_AE_A2_E6_88_B7_E7_AB_AF_E8_A3_85_E5_A4_87_E7_AE_A1_E7_90_86_E5_99_A8["\230\155\180\230\150\176\231\191\133\232\134\128\229\177\158\230\128\167UI\230\152\190\231\164\186"](_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE, _E5_8F_AF_E6_93_8D_E4_BD_9C__E5_9B_BE_E6_A0_87_E6_A1_86, _E5_8F_AF_E6_93_8D_E4_BD_9C__E5_90_8D_E7_A7_B0, _E5_8F_AF_E6_93_8D_E4_BD_9C__E5_93_81_E8_B4_A8, _E5_8F_AF_E6_93_8D_E4_BD_9C__E5_B1_9E_E6_80_A7UI_E5_88_97_E8_A1_A8, p23, p24)
+end
+function v2.OnEnter(_) end
+function v2.OnUpdate(_) end
+function v2.OnLeave(_)
+    event_customEvent_onFire_1:Disconnect()
+    event_gui_Button_activated_2:Disconnect()
+    event_customEvent_onFire_3:Disconnect()
+    event_customEvent_onFire_4:Disconnect()
+    event_customEvent_onClientEvent_5:Disconnect()
+    event_customEvent_onClientEvent_6:Disconnect()
+    event_gui_Button_activated_7:Disconnect()
+    event_customEvent_onFire_8:Disconnect()
+    event_customEvent_onFire_9:Disconnect()
+end
+_E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6 = Instance.new("BindableEvent")
+_E7_A1_AE_E8_AE_A4_E5_87_BA_E5_94_AE_E4_BA_8B_E4_BB_B6 = Instance.new("BindableEvent")
+_E7_A1_AE_E8_AE_A4_E9_87_8D_E9_93_B8_E4_BA_8B_E4_BB_B6 = Instance.new("BindableEvent")
+_E4_B8_BB_E7_95_8C_E9_9D_A2 = script.Parent
+_E8_83_8C_E6_99_AF = _E4_B8_BB_E7_95_8C_E9_9D_A2:WaitForChild("\232\131\140\230\153\175", 5)
+local v25 = _E8_83_8C_E6_99_AF:WaitForChild("\230\160\135\231\173\190\230\160\143", 5)
+_E5_8D_87_E9_98_B6_E6_A0_87_E7_AD_BE = v25:WaitForChild("\229\141\135\233\152\182", 5)
+_E9_80_89_E4_B8_AD_E6_95_88_E6_9E_9C = _E5_8D_87_E9_98_B6_E6_A0_87_E7_AD_BE:WaitForChild("\233\128\137\228\184\173\230\149\136\230\158\156", 5)
+for _, v_u_26 in ipairs(v25:GetChildren()) do
+    if v_u_26:isA("TextButton") then
+        v_u_26.Activated:Connect(function(_, _)
+            -- upvalues: (copy) v_u_26
+            _E9_80_89_E4_B8_AD_E6_95_88_E6_9E_9C.Parent = v_u_26
+            _E5_88_87_E6_8D_A2_E6_A0_87_E7_AD_BE(v_u_26.Name)
+        end)
+    end
+end
+_E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6 = _E8_83_8C_E6_99_AF:WaitForChild("\229\177\158\230\128\167", 5)
+_E5_8F_AF_E6_93_8D_E4_BD_9C__E5_9B_BE_E6_A0_87_E6_A1_86 = _E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6:WaitForChild("\229\155\190\230\160\135\230\161\134", 5)
+_E5_8F_AF_E6_93_8D_E4_BD_9C__E5_90_8D_E7_A7_B0 = _E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6:WaitForChild("\229\144\141\231\167\176", 5)
+_E5_8F_AF_E6_93_8D_E4_BD_9C__E5_93_81_E8_B4_A8 = _E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6:WaitForChild("\229\147\129\232\180\168", 5)
+_E5_B1_9E_E6_80_A7_E8_92_99_E7_89_88 = _E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6:WaitForChild("\229\177\158\230\128\167\230\161\134", 5):WaitForChild("\232\146\153\231\137\136", 5)
+local v27 = _E5_B1_9E_E6_80_A7_E6_A1_86_E6_9E_B6:WaitForChild("\229\177\158\230\128\167\230\161\134", 5):WaitForChild("\229\136\151\232\161\168", 5)
+_E5_8F_AF_E6_93_8D_E4_BD_9C__E5_B1_9E_E6_80_A7UI_E5_88_97_E8_A1_A8 = {}
+for v_u_28, v29 in ipairs(v27:GetChildren()) do
+    if v29:isA("Frame") then
+        v29:FindFirstChild("\233\135\141\233\147\184\230\143\144\231\164\186", false).Activated:Connect(function(_, _)
+            -- upvalues: (copy) v_u_28
+            _E5_88_87_E6_8D_A2_E9_94_81_E5_AE_9A_E8_AF_8D_E6_9D_A1(v_u_28 - 4)
+        end)
+        local v30 = _E5_8F_AF_E6_93_8D_E4_BD_9C__E5_B1_9E_E6_80_A7UI_E5_88_97_E8_A1_A8
+        local v31 = #_E5_8F_AF_E6_93_8D_E4_BD_9C__E5_B1_9E_E6_80_A7UI_E5_88_97_E8_A1_A8 + 1
+        table.insert(v30, v31, v29)
+    end
+end
+local v32 = _E8_83_8C_E6_99_AF:WaitForChild("\229\141\135\233\152\182", 5)
+_E9_A2_9C_E8_89_B2_E9_85_8D_E7_BD_AE = v32:WaitForChild("\233\162\156\232\137\178", 5)
+_E5_8D_87_E9_98_B6_E6_8C_89_E9_92_AE = v32:WaitForChild("\230\140\137\233\146\174", 5):WaitForChild("\229\141\135\233\152\182", 5)
+_E7_A1_AE_E8_AE_A4_E6_8C_89_E9_92_AE_E6_96_87_E6_9C_AC = _E5_8D_87_E9_98_B6_E6_8C_89_E9_92_AE:WaitForChild("\229\144\141\231\167\176", 5)
+_E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6 = v32:WaitForChild("\229\136\134\232\167\163\230\143\144\231\164\186", 5)
+_E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_96_87_E6_9C_AC = _E5_88_86_E8_A7_A3_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6:WaitForChild("\230\143\144\231\164\186", 5)
+_E5_93_81_E8_B4_A8_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6 = v32:WaitForChild("\229\147\129\232\180\168\230\143\144\231\164\186", 5)
+_E5_93_81_E8_B4_A81_E6_96_87_E6_9C_AC = _E5_93_81_E8_B4_A8_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6:WaitForChild("\229\147\129\232\180\1681", 5)
+_E5_93_81_E8_B4_A82_E6_96_87_E6_9C_AC = _E5_93_81_E8_B4_A8_E6_8F_90_E7_A4_BA_E6_A1_86_E6_9E_B6:WaitForChild("\229\147\129\232\180\1682", 5)
+_E6_88_90_E5_8A_9F_E7_8E_87_E6_A1_86_E6_9E_B6 = v32:WaitForChild("\230\136\144\229\138\159\231\142\135", 5)
+_E6_88_90_E5_8A_9F_E7_8E_87 = _E6_88_90_E5_8A_9F_E7_8E_87_E6_A1_86_E6_9E_B6:WaitForChild("\230\136\144\229\138\159\231\142\135", 5)
+_E5_8D_87_E9_98_B6_E5_9B_BE_E6_A0_87 = v32:WaitForChild("\231\137\169\229\147\129\230\167\189", 5):WaitForChild("\229\155\190\230\160\135", 5)
+local v33 = v32:WaitForChild("\230\157\144\230\150\153", 5):WaitForChild("\230\140\137\233\146\1741", 5)
+_E6_9D_90_E6_96_99_E5_9B_BE_E6_A0_87 = v33:WaitForChild("\229\155\190\230\160\135", 5)
+_E6_9D_90_E6_96_99_E6_95_B0_E9_87_8F = v33:WaitForChild("\229\128\188", 5)
+_E6_9D_90_E6_96_992_E6_A1_86_E6_9E_B6 = v32:WaitForChild("\230\157\144\230\150\153", 5):WaitForChild("\230\140\137\233\146\1742", 5)
+_E6_9D_90_E6_96_992_E6_96_87_E6_9C_AC = _E6_9D_90_E6_96_992_E6_A1_86_E6_9E_B6:WaitForChild("\229\128\188", 5)
+local v34 = game:GetService("ReplicatedStorage")
+_E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8 = require((v34:WaitForChild("\232\132\154\230\156\172\230\168\161\229\157\151", 5):WaitForChild("\229\133\172\231\148\168", 5):WaitForChild("\229\188\149\231\148\168\231\174\161\231\144\134\229\153\168", 5)))
+_E7_8E_A9_E5_AE_B6_E5_80_BC_E5_AF_B9_E8_B1_A1_E8_8E_B7_E5_8F_96_E5_AE_8C_E6_88_90_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175\229\136\157\229\167\139\229\140\150", "\231\142\169\229\174\182\229\128\188\229\175\185\232\177\161\232\142\183\229\143\150\229\174\140\230\136\144")
+_E6_95_B0_E5_AD_A6_E8_BF_90_E7_AE_97 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\230\149\176\229\173\166\232\191\144\231\174\151")
+_E5_BC_B9_E5_87_BA_E6_A1_86_E6_98_BE_E7_A4_BA_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\230\137\147\229\188\128\229\188\185\229\135\186\230\161\134")
+_E5_AE_A2_E6_88_B7_E7_AB_AF_E8_A3_85_E5_A4_87_E7_AE_A1_E7_90_86_E5_99_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175\232\163\133\229\164\135\231\174\161\231\144\134\229\153\168")
+UI_E5_9F_BA_E7_A1_80_E5_B7_A5_E5_85_B7 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("UI\229\159\186\231\161\128\229\183\165\229\133\183")
+UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("UI\229\138\168\231\148\187\231\174\161\231\144\134\229\153\168")
+_E5_8D_87_E9_98_B6_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\232\163\133\229\164\135", "\229\141\135\233\152\182\231\191\133\232\134\128")
+_E8_BD_AC_E6_8D_A2_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\232\163\133\229\164\135", "\232\189\172\230\141\162\231\191\133\232\134\128")
+_E7_BF_85_E8_86_80_E6_B4_97_E7_82_BC_E8_A1_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\149\176\230\141\174\232\161\168"]("\231\191\133\232\134\128\230\180\151\231\130\188\232\161\168")
+_E9_87_8D_E7_BD_AE_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\232\163\133\229\164\135", "\233\135\141\231\189\174\231\191\133\232\134\128")
+_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E8_A1_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\149\176\230\141\174\232\161\168"]("\231\191\133\232\134\128\229\141\135\233\152\182\232\161\168")
+_E5_B8_B8_E9_87_8F = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\229\184\184\233\135\143")
+_E6_B8_B8_E6_88_8F_E9_85_8D_E7_BD_AE_E6_95_B0_E6_8D_AE = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\230\184\184\230\136\143\233\133\141\231\189\174\230\149\176\230\141\174")
+_E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\230\152\190\231\164\186\230\150\135\229\173\151\230\143\144\231\164\186")
+_E6_89_93_E5_BC_80_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\230\137\147\229\188\128\231\191\133\232\134\128\229\141\135\233\152\182")
+_E5_88_87_E6_8D_A2_E6_A0_87_E7_AD_BE("\229\141\135\233\152\182")
+event_customEvent_onFire_1 = _E7_8E_A9_E5_AE_B6_E5_80_BC_E5_AF_B9_E8_B1_A1_E8_8E_B7_E5_8F_96_E5_AE_8C_E6_88_90_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    local v_u_35 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\231\142\169\229\174\182\229\128\188\229\175\185\232\177\161"]("\232\180\167\229\184\129", "\231\190\189\230\160\184")
+    local v_u_36 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\231\142\169\229\174\182\229\128\188\229\175\185\232\177\161"]("\232\180\167\229\184\129", "\228\184\141\229\143\175\228\186\164\230\152\147\231\190\189\230\160\184")
+    _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 = v_u_35.Value + v_u_36.Value
+    _E6_9B_B4_E6_96_B0_E6_9D_90_E6_96_99_E6_98_BE_E7_A4_BA()
+    v_u_35.Changed:Connect(function(p37)
+        -- upvalues: (copy) v_u_36
+        _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 = p37 + v_u_36.Value
+        if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\141\135\233\152\182" then
+            _E6_9B_B4_E6_96_B0_E6_9D_90_E6_96_99_E6_98_BE_E7_A4_BA()
+        end
+    end)
+    v_u_36.Changed:Connect(function(p38)
+        -- upvalues: (copy) v_u_35
+        _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 = v_u_35.Value + p38
+        if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\141\135\233\152\182" then
+            _E6_9B_B4_E6_96_B0_E6_9D_90_E6_96_99_E6_98_BE_E7_A4_BA()
+        end
+    end)
+    local v39 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\231\142\169\229\174\182\229\128\188\229\175\185\232\177\161"]("\232\180\167\229\184\129", "\231\190\189\230\175\155\231\172\148")
+    _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_AF_9B_E7_AC_94 = v39.Value
+    v39.Changed:Connect(function(p40)
+        _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_AF_9B_E7_AC_94 = p40
+    end)
+end)
+event_gui_Button_activated_2 = _E5_8D_87_E9_98_B6_E6_8C_89_E9_92_AE.Activated:Connect(function(_, _)
+    if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\141\135\233\152\182" and _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"] < #_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E8_A1_A8 then
+        local v41 = _E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E8_A1_A8[_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"]]
+        if _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 >= v41["\230\182\136\232\128\151\230\157\144\230\150\153"] then
+            _E5_8D_87_E9_98_B6_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6:FireServer(_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\231\180\162\229\188\149"], _E8_A3_85_E5_A4_87_E4_B8_AD)
+        end
+    end
+    if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\230\180\151\231\130\188" and _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\229\147\129\232\180\168"] - 5 <= _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_AF_9B_E7_AC_94 then
+        local v42 = _E7_BF_85_E8_86_80_E6_B4_97_E7_82_BC_E8_A1_A8[_E5_88_97_E8_A1_A8_E6_9C_89_E6_95_88_E9_95_BF_E5_BA_A6()]
+        if (not v42 and 0 or v42["\231\190\189\230\160\184"]) > _E7_8E_A9_E5_AE_B6_E7_BE_BD_E6_A0_B8 then
+            return
+        end
+        _E5_BC_B9_E5_87_BA_E6_A1_86_E6_98_BE_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire(nil, "Reroll will randomize the attributes in the box. Are you sure?", _E7_A1_AE_E8_AE_A4_E9_87_8D_E9_93_B8_E4_BA_8B_E4_BB_B6)
+    end
+    if _E5_BD_93_E5_89_8D_E6_A0_87_E7_AD_BE_E9_A1_B5 == "\229\136\134\232\167\163" then
+        if _E8_A3_85_E5_A4_87_E4_B8_AD then
+            _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("Unable to convert wing in equiped.")
+            return nil
+        end
+        if _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\230\148\182\232\151\143"] then
+            _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("Unable to convert wing in favorites. Please cancel it first.")
+            return nil
+        end
+        _E5_BC_B9_E5_87_BA_E6_A1_86_E6_98_BE_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire(nil, "Convert will cause Wing to be destroyed. Are you sure?", _E7_A1_AE_E8_AE_A4_E5_87_BA_E5_94_AE_E4_BA_8B_E4_BB_B6)
+    end
+end)
+event_customEvent_onFire_3 = _E7_A1_AE_E8_AE_A4_E9_87_8D_E9_93_B8_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    _E9_87_8D_E7_BD_AE_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6:FireServer(_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\231\180\162\229\188\149"], _E8_A3_85_E5_A4_87_E4_B8_AD, _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8)
+end)
+event_customEvent_onFire_4 = _E7_A1_AE_E8_AE_A4_E5_87_BA_E5_94_AE_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    _E8_BD_AC_E6_8D_A2_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6:FireServer(_E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE["\231\180\162\229\188\149"], _E8_A3_85_E5_A4_87_E4_B8_AD)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\229\133\179\233\151\173\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF, nil, nil, _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6)
+end)
+event_customEvent_onClientEvent_5 = _E9_87_8D_E7_BD_AE_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6.OnClientEvent:Connect(function(p43, _, _)
+    _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE = p43
+    _E6_9B_B4_E6_96_B0_E5_8D_87_E9_98_B6_E5_8C_BA()
+end)
+event_customEvent_onClientEvent_6 = _E5_8D_87_E9_98_B6_E7_BF_85_E8_86_80_E4_BA_8B_E4_BB_B6.OnClientEvent:Connect(function(p44, p45, _)
+    _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE = p44
+    _E6_9B_B4_E6_96_B0_E5_8D_87_E9_98_B6_E5_8C_BA()
+    if p45 then
+        local v46 = {
+            ["\230\184\144\229\143\152\232\137\178"] = _E9_A2_9C_E8_89_B2_E9_85_8D_E7_BD_AE:GetAttribute("success"),
+            ["\230\143\143\232\190\185"] = Color3.fromRGB(51, 51, 51)
+        }
+        _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("Upgrade Successful!", 5, v46)
+    else
+        _E9_A2_9C_E8_89_B2["\230\184\144\229\143\152\232\137\178"] = _E9_A2_9C_E8_89_B2_E9_85_8D_E7_BD_AE:GetAttribute("fail")
+        _E9_A2_9C_E8_89_B2["\230\143\143\232\190\185"] = Color3.fromRGB(51, 51, 51)
+        _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("Upgrade Failed.", 5, _E9_A2_9C_E8_89_B2)
+    end
+end)
+event_gui_Button_activated_7 = _E4_B8_BB_E7_95_8C_E9_9D_A2.Activated:Connect(function(_, _)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\229\133\179\233\151\173\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF, nil, nil, _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6)
+end)
+event_customEvent_onFire_8 = _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    _E4_B8_BB_E7_95_8C_E9_9D_A2.Visible = false
+end)
+event_customEvent_onFire_9 = _E6_89_93_E5_BC_80_E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6_E4_BA_8B_E4_BB_B6.Event:Connect(function(p47, p48, _)
+    _E9_87_8D_E9_93_B8_E5_B1_9E_E6_80_A7_E5_88_97_E8_A1_A8 = {
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    }
+    _E7_BF_85_E8_86_80_E6_95_B0_E6_8D_AE = p47
+    _E8_A3_85_E5_A4_87_E4_B8_AD = p48
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\230\152\190\231\164\186\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\230\152\190\231\164\186\229\138\168\231\148\187"](_E4_B8_BB_E7_95_8C_E9_9D_A2, 0.05, 3)
+    _E4_B8_BB_E7_95_8C_E9_9D_A2.Visible = true
+    _E5_88_87_E6_8D_A2_E6_A0_87_E7_AD_BE("\229\141\135\233\152\182")
+    _E9_80_89_E4_B8_AD_E6_95_88_E6_9E_9C.Parent = _E5_8D_87_E9_98_B6_E6_A0_87_E7_AD_BE
+end)
+return _E7_BF_85_E8_86_80_E5_8D_87_E9_98_B6UI

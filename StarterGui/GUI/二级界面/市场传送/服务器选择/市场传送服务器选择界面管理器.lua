@@ -1,0 +1,124 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Decompiled with Velocity Script Decompiler
+_E6_97_B6_E9_95_BF_E4_BC_A0_E9_80_81_E6_9C_8D_E5_8A_A1_E5_99_A8_E9_80_89_E6_8B_A9_E7_95_8C_E9_9D_A2_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+_E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8 = {}
+_E8_AF_A6_E7_BB_86_E6_95_B0_E6_8D_AE = {}
+local v1 = require((game:GetService("ReplicatedStorage"):WaitForChild("BaseState", 60)))
+require((game:GetService("ReplicatedStorage"):WaitForChild("FsmMachine", 60)))
+local v2 = v1:New("\233\187\152\232\174\164\231\138\182\230\128\129")
+function _E7_82_B9_E5_87_BB_E5_90_8C_E6_84_8F(p3)
+    local v4 = id_E5_AF_B9_E5_BA_94_E5_9C_BA_E6_99_AF_E6_95_B0_E6_8D_AE[p3]
+    if v4 then
+        _E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6:Fire("Teleporting...")
+        _E8_BF_9B_E5_85_A5_E5_B8_82_E5_9C_BA_E4_BA_8B_E4_BB_B6:FireServer(v4["\230\156\141\229\138\161\229\153\168ID"], v4["\229\156\186\230\153\175ID"])
+    end
+end
+function _E6_9B_B4_E6_96_B0_E6_9C_8D_E5_8A_A1_E5_99_A8_E5_88_97_E8_A1_A8()
+    local v5 = _E5_B8_B8_E9_87_8F["\229\184\130\229\156\186\229\156\186\230\153\175ID"]
+    if _E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BAid == 2 then
+        v5 = _E5_B8_B8_E9_87_8F["\229\184\130\229\156\186\229\156\186\230\153\175ID2"]
+    end
+    local v6 = 1
+    if _E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BA_E6_9C_8D_E5_8A_A1_E5_99_A8_E6_95_B0_E6_8D_AE then
+        local v7 = _E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BA_E6_9C_8D_E5_8A_A1_E5_99_A8_E6_95_B0_E6_8D_AE[tostring(v5)]
+        if v7 then
+            for v8, v9 in pairs(v7) do
+                v9["\229\156\186\230\153\175ID"] = v5
+                v9["\230\156\141\229\138\161\229\153\168ID"] = v8
+                id_E5_AF_B9_E5_BA_94_E5_9C_BA_E6_99_AF_E6_95_B0_E6_8D_AE[v6] = v9
+                local v10 = _E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8[v6]
+                if v10 then
+                    v10.Visible = true
+                    local v11 = v10:FindFirstChild("\232\131\140\230\153\175", false)
+                    local v12 = v11:FindFirstChild("\230\152\190\231\164\186\229\144\141", false)
+                    local v13 = v11:FindFirstChild("\231\142\169\229\174\182\230\149\176", false)
+                    v12.Text = "Server " .. v6
+                    v13.Text = v9["\228\186\186\230\149\176"] .. "/120"
+                end
+                v6 = v6 + 1
+            end
+        end
+    end
+    if v6 <= #_E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8 then
+        k_inc = 1
+        if #_E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8 < v6 then
+            k_inc = -k_inc
+        end
+        for _ = v6, #_E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8, k_inc do
+            _E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8[v6].Visible = false
+        end
+    end
+end
+function v2.OnEnter(_) end
+function v2.OnUpdate(_) end
+function v2.OnLeave(_)
+    event_customEvent_onClientEvent_1:Disconnect()
+    event_customEvent_onFire_2:Disconnect()
+    event_customEvent_onFire_3:Disconnect()
+    event_gui_Button_activated_4:Disconnect()
+    event_customEvent_onFire_5:Disconnect()
+end
+id_E5_AF_B9_E5_BA_94_E5_9C_BA_E6_99_AF_E6_95_B0_E6_8D_AE = {}
+_E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6 = Instance.new("BindableEvent")
+_E4_B8_BB_E7_95_8C_E9_9D_A2 = script.Parent
+_E8_83_8C_E6_99_AF = _E4_B8_BB_E7_95_8C_E9_9D_A2:WaitForChild("\232\131\140\230\153\175", 5)
+_E5_85_B3_E9_97_AD_E6_8C_89_E9_92_AE = _E8_83_8C_E6_99_AF:WaitForChild("\229\133\179\233\151\173\230\140\137\233\146\174", 5):WaitForChild("\230\140\137\233\146\174", 5)
+local v14 = _E8_83_8C_E6_99_AF:WaitForChild("\229\136\151\232\161\168", 5)
+for _, v15 in ipairs(v14:GetChildren()) do
+    if v15:isA("Frame") then
+        v15:Destroy()
+    end
+end
+local v16 = game:GetService("ReplicatedStorage")
+_E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8 = require((v16:WaitForChild("\232\132\154\230\156\172\230\168\161\229\157\151", 5):WaitForChild("\229\133\172\231\148\168", 5):WaitForChild("\229\188\149\231\148\168\231\174\161\231\144\134\229\153\168", 5)))
+_E6_B8_B8_E6_88_8F_E9_85_8D_E7_BD_AE_E6_95_B0_E6_8D_AE = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\149\176\230\141\174\232\161\168"]("\230\184\184\230\136\143\233\133\141\231\189\174\230\149\176\230\141\174")
+_E6_95_B0_E5_AD_A6_E8_BF_90_E7_AE_97 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\230\149\176\229\173\166\232\191\144\231\174\151")
+UI_E5_9F_BA_E7_A1_80_E5_B7_A5_E5_85_B7 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("UI\229\159\186\231\161\128\229\183\165\229\133\183")
+UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("UI\229\138\168\231\148\187\231\174\161\231\144\134\229\153\168")
+_E5_B8_B8_E9_87_8F = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\229\184\184\233\135\143")
+_E8_BF_9B_E5_85_A5_E5_B8_82_E5_9C_BA_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\228\186\164\230\152\147\229\184\130\229\156\186", "\232\191\155\229\133\165\229\184\130\229\156\186")
+_E5_85_B3_E9_97_AD_E4_B8_96_E7_95_8C_E6_A0_91_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\229\133\179\233\151\173\229\184\130\229\156\186\228\188\160\233\128\129")
+_E6_98_BE_E7_A4_BA_E6_96_87_E5_AD_97_E6_8F_90_E7_A4_BA_E4_BA_8B_E4_BB_B6 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\230\152\190\231\164\186\230\150\135\229\173\151\230\143\144\231\164\186")
+_E5_8F_AF_E6_93_8D_E4_BD_9C_E6_8F_90_E7_A4_BA_E5_B7_A5_E5_85_B7 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\230\168\161\229\157\151\229\188\149\231\148\168"]("\229\143\175\230\147\141\228\189\156\230\143\144\231\164\186\229\183\165\229\133\183")
+_E6_89_93_E5_BC_80_E6_9C_8D_E5_8A_A1_E5_99_A8_E9_80_89_E6_8B_A9_E7_95_8C_E9_9D_A2 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\229\174\162\230\136\183\231\171\175UI", "\230\137\147\229\188\128\230\156\141\229\138\161\229\153\168\233\128\137\230\139\169")
+_E5_90_8C_E6_AD_A5_E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BA_E6_9C_8D_E5_8A_A1_E5_99_A8 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\228\186\139\228\187\182\229\188\149\231\148\168"]("\228\186\164\230\152\147\229\184\130\229\156\186", "\229\144\140\230\173\165")
+_E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8 = {}
+local v17 = _E5_BC_95_E7_94_A8_E7_AE_A1_E7_90_86_E5_99_A8["\232\142\183\229\143\150\233\162\132\229\136\182\228\189\147\229\188\149\231\148\168"]("UI", "\230\156\141\229\138\161\229\153\168\233\128\137\230\139\169\233\162\132\229\136\182\228\189\147")
+for v_u_18 = 1, 15 do
+    local v19 = v17:Clone()
+    v19:FindFirstChild("\232\131\140\230\153\175", false):FindFirstChild("\229\144\140\230\132\143"):FindFirstChild("\230\140\137\233\146\174", false).Activated:Connect(function(_, _)
+        -- upvalues: (copy) v_u_18
+        _E7_82_B9_E5_87_BB_E5_90_8C_E6_84_8F(v_u_18)
+    end)
+    v19.Parent = v14
+    v19.Visible = false
+    local v20 = _E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8
+    local v21 = #_E6_9C_8D_E5_8A_A1_E5_99_A8UI_E5_88_97_E8_A1_A8 + 1
+    table.insert(v20, v21, v19)
+end
+event_customEvent_onClientEvent_1 = _E5_90_8C_E6_AD_A5_E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BA_E6_9C_8D_E5_8A_A1_E5_99_A8.OnClientEvent:Connect(function(p22, _, _)
+    _E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BA_E6_9C_8D_E5_8A_A1_E5_99_A8_E6_95_B0_E6_8D_AE = p22
+    _E6_9B_B4_E6_96_B0_E6_9C_8D_E5_8A_A1_E5_99_A8_E5_88_97_E8_A1_A8()
+end)
+event_customEvent_onFire_2 = _E6_89_93_E5_BC_80_E6_9C_8D_E5_8A_A1_E5_99_A8_E9_80_89_E6_8B_A9_E7_95_8C_E9_9D_A2.Event:Connect(function(p23, _, _)
+    _E4_BA_A4_E6_98_93_E5_B8_82_E5_9C_BAid = p23
+    if _E4_B8_BB_E7_95_8C_E9_9D_A2.Visible then
+        return nil
+    end
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\230\152\190\231\164\186\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\230\152\190\231\164\186\229\138\168\231\148\187"](_E4_B8_BB_E7_95_8C_E9_9D_A2, 0.05, 3)
+    _E4_B8_BB_E7_95_8C_E9_9D_A2.Visible = true
+    _E6_9B_B4_E6_96_B0_E6_9C_8D_E5_8A_A1_E5_99_A8_E5_88_97_E8_A1_A8()
+end)
+event_customEvent_onFire_3 = _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    _E4_B8_BB_E7_95_8C_E9_9D_A2.Visible = false
+end)
+event_gui_Button_activated_4 = _E5_85_B3_E9_97_AD_E6_8C_89_E9_92_AE.Activated:Connect(function(_, _)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\229\133\179\233\151\173\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF, nil, nil, _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6)
+end)
+event_customEvent_onFire_5 = _E5_85_B3_E9_97_AD_E4_B8_96_E7_95_8C_E6_A0_91_E4_BA_8B_E4_BB_B6.Event:Connect(function(_, _, _)
+    UI_E5_8A_A8_E7_94_BB_E7_AE_A1_E7_90_86_E5_99_A8["\229\133\179\233\151\173\229\138\168\231\148\187"](_E8_83_8C_E6_99_AF, nil, nil, _E5_85_B3_E9_97_AD_E5_9B_9E_E8_B0_83_E4_BA_8B_E4_BB_B6)
+end)
+return _E6_97_B6_E9_95_BF_E4_BC_A0_E9_80_81_E6_9C_8D_E5_8A_A1_E5_99_A8_E9_80_89_E6_8B_A9_E7_95_8C_E9_9D_A2_E7_AE_A1_E7_90_86_E5_99_A8
